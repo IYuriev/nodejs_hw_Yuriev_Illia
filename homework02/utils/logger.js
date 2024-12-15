@@ -1,4 +1,4 @@
-import colors from "colors";
+import colors from "colors/safe.js";
 import "dotenv/config";
 
 if (process.env.COLORS_ENABLED === "false") {
@@ -8,10 +8,10 @@ if (process.env.COLORS_ENABLED === "false") {
 export const logger = (prefix) => {
   return {
     log: (message) => {
-      console.log(`${prefix}:`.green, message);
+      console.log(colors.green(`${prefix}:`), message);
     },
     warn: (message) => {
-      console.error(`${prefix}:`.red, message);
+      console.error(colors.red(`${prefix}:`), message);
     },
   };
 };
