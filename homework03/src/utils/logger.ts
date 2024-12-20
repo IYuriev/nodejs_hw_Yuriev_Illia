@@ -10,10 +10,11 @@ const logger = (prefix: string) => {
   return {
     log: (message: string) => {
       console.log(colors.green(`${prefix}:`), message);
-      writeLogs(colors.green(`${prefix}:`), message);
+      writeLogs(`${prefix}:`, message);
     },
     warn: (message: string) => {
       console.error(colors.red(`${prefix}:`), message);
+      writeLogs(`WARN ${prefix}:`, message);
     },
   };
 };
