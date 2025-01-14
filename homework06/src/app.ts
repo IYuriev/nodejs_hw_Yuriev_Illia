@@ -36,7 +36,7 @@ process.on("SIGINT", handleShutdown);
 process.on("SIGTERM", handleShutdown);
 
 async function handleShutdown(signal: string): Promise<void> {
-  log(`Received ${signal}. Closing MongoDB connection...`);
+  log(`Received ${signal}. Closing PostgreSQL connection...`);
   await databaseService.disconnect();
   log(`${signal} handled. Exiting process.`);
   process.exit(0);
