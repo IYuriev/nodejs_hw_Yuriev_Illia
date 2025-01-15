@@ -1,5 +1,11 @@
 import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
 
+export enum PostStatus {
+  DRAFT = "draft",
+  PUBLISHED = "published",
+  ARCHIVED = "archived",
+}
+
 @Entity("posts")
 class Post {
   @PrimaryGeneratedColumn("increment")
@@ -14,8 +20,12 @@ class Post {
   @Column("text")
   content: string;
 
-  @Column("text")
-  status: string;
+  @Column({
+    type: "enum",
+    enum: PostStatus,
+    default: PostStatus.DRAFT,
+  })
+  status: PostStatus;
 
   @Column("timestamp")
   createdAt: Date;

@@ -64,10 +64,6 @@ class UserController {
     const { user_id } = req.params;
     try {
       const posts = await userService.getUserPosts(+user_id);
-      if (!posts.length) {
-        res.status(404).json({ error: "No posts found for this user" });
-        return;
-      }
       res.json(posts);
     } catch (err) {
       handleError(err, res);
